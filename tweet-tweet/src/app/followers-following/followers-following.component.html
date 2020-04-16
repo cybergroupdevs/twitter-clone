@@ -73,7 +73,7 @@
                 </span>
                 <span>  
                     <div *ngIf="currentUserhandle !== currentUser.userhandle" >
-                        <p>whatever logic</p>
+                        <p hidden>whatever logic</p>
                         <div *ngIf="!following.isCurrentUserFollowing">
                             <button class="btn" id="follow-btn" (click)="follow(following.following.following.userhandle)">Follow</button>
                         </div>

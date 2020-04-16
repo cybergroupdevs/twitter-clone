@@ -1,3 +1,4 @@
+import { AuthServiceService } from './../services/auth-service.service';
 import { TweetModalComponent } from './tweet-modal/tweet-modal.component';
 import { MyprofileComponent } from './../myprofile/myprofile.component';
 import { element } from 'protractor';
@@ -8,10 +9,8 @@ import { map, shareReplay } from 'rxjs/operators';
 import{Router,NavigationEnd}from '@angular/router'
 import ParseJwt from "../utils/parsejwt";
 import { IJwtPayload} from "../models/user.interface";
-import {
-  NgbModal,
-  ModalDismissReasons
-} from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+
 @Component({
   selector: 'side-nav',
   templateUrl: './side-nav.component.html',
@@ -19,6 +18,7 @@ import {
 })
 export class SideNavComponent implements OnInit{
    isClicked:boolean = false;
+   userhandle: string;
    currentUser: IJwtPayload = ParseJwt.parseJwt();
    currentUserhandle= this.currentUser.userhandle;
 
@@ -28,9 +28,10 @@ export class SideNavComponent implements OnInit{
     private render:Renderer,
     private ren:Renderer2,
     private el: ElementRef,
+    private auth: AuthServiceService,
     private myprofileComponent: MyprofileComponent,
     private modalService: NgbModal
-   ) {
+   ){
     this.router.events.subscribe(event => {
 
       if (event instanceof NavigationEnd) {
@@ -50,10 +51,17 @@ export class SideNavComponent implements OnInit{
     this.router.navigate(["/login"])
    
   }
+
+  toggle(event:any){
+       this.isClicked=!this.isClicked;      
+      this.render.setElementClass(event.target,"selected",true);
+      this.myprofileComponent.loadSearchedUserDetails(this.currentUserhandle);
+  }
+
   showModal(){
-   
     this.open(TweetModalComponent);
   }
+  
     toggle(event:any){
        this.isClicked=!this.isClicked;
        this.render.setElementClass(event.target,"selected",true);
@@ -84,7 +92,5 @@ export class SideNavComponent implements OnInit{
     }
   }
   ngOnInit():void{
-    
   }
 }
-

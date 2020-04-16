@@ -4,6 +4,20 @@
     font-weight: lighter;
 }
 
+p{
+    color: black;
+    font-size: 15px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+}
+
+.img-icon{
+    height: 5rem;
+    width: 5rem;
+    object-fit: cover;
+    border-radius: 30px;
+    margin-right: 1.5rem;
+}
+
 span{
     color: black;
     font-size: 13px;
@@ -24,7 +38,22 @@ img{
     padding: 0.8rem;
     cursor: pointer;
     border-radius: 30px;
-} */
+}
+
+.main-container{
+    border-top: black;
+    border-bottom: black;
+    border-top-width: 1rem;
+    border-bottom-width: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+.main-container:hover{
+    background-color: #F5F8FA;
+}
+*/
 .feed{
     margin-top: 260px;
 }

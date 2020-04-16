@@ -199,3 +199,22 @@
   color:#00BFFF;
   cursor: pointer;
 }
+
+.followerCount:hover{
+  border-bottom: 1px solid black;
+}
+
+.followingCount:hover{
+  border-bottom: 1px solid black;
+}
+
+.count{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  cursor: pointer;
+}
+
+.followerCount{
+  margin-right: 2rem;
+}

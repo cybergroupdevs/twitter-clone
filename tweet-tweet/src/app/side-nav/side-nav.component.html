@@ -29,7 +29,8 @@
           <i class="fa fa-list-alt" aria-hidden="true"></i>
           <span>Lists</span>
         </a>
-        <a mat-list-item class="for-hover"(click)="toggle($event)" routerLink="/profile/{{currentUserhandle}}">
+        <a mat-list-item class="for-hover" (click)="toggle($event)" [routerLink]="['/profile', userhandle]">
+        <!-- <a mat-list-item class="for-hover"(click)="toggle($event)" routerLink="/profile/{{currentUserhandle}}"> -->
           <i class="fa fa-user" aria-hidden="true"></i>
           <span>Profile</span>
         </a>
@@ -43,11 +44,11 @@
   </mat-sidenav>
   <mat-sidenav-content class="main-content-big mr-0">
     <div class="d-flex">
-      <div class="align-self-center bg-white p-3 navigation-header">
+      <div class="align-self-center bg-white py-3 navigation-header">
         <span class="page-title">Home</span>
         <router-outlet></router-outlet>
       </div>
-      <div class="ml-3">
+      <div class="ml-3 trends">
         <app-trends></app-trends>
       </div>
     </div>  
@@ -73,20 +74,27 @@
         <a mat-list-item class="small"><i class="fa fa-plus special" aria-hidden="true"></i></a>
       </mat-nav-list>
     </div>
-    <mat-sidenav-content class="main-content-big">
+  </mat-sidenav>
+  <mat-sidenav-content class="main-content-big">
+    <div class="d-flex">
       <div class="align-self-center bg-white p-3 navigation-header">
         <span class="page-title">Home</span>
+        <router-outlet></router-outlet>
       </div>
-    </mat-sidenav-content>
-  </mat-sidenav>
+      <div class="ml-3 trends">
+        <app-trends></app-trends>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
-  <mat-sidenav-content class="main-content">
+  <!-- <mat-sidenav-content class="main-content">
     <div class="align-self-center p-3 navigation-header">
       <span class="page-title">Home</span>
     </div>
     <app-create-post></app-create-post>
   </mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container> -->
 
 <!--       For Mobile Devices         -->
 

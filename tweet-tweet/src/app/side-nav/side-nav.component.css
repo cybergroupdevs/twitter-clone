@@ -4,6 +4,10 @@
   border-right: 1px solid #cdcdcd;
 }
 
+.trends{
+  width: 30%;
+}
+
 .sidenav-sub-container{
   margin-left: 4.8rem;
 }

@@ -48,24 +48,7 @@ export class UserService {
     }   
 
     searchUser(name:string): Observable<any>{
-        return this.http.get("http://localhost:3000/user/"+name, {headers: this.header_token, observe: "response"}).pipe(
-            tap(_ => this.log("showing details")),
-            catchError(this.handleError<any>('error in details')
-        ));
-    }
-
-    private handleError<T> (operation = 'operation', result?: T) {
-        return (error: any): Observable<T> => {
-      
-            // TODO: send the error to remote logging infrastructure
-            console.error(error.status); // log to console instead
-      
-            // TODO: better job of transforming error for user consumption
-            // this.log(`${operation} failed: ${error.message}`);
-      
-            // Let the app keep running by returning an empty result.
-            return of(error as T);
-        };
+        return this.http.get("http://localhost:3000/user/"+name);
     }
     
     userDetails(_id:string): Observable<HttpResponse<any>>{

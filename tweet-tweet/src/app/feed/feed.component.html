@@ -1,13 +1,13 @@
 <div>
-  <div class="d-flex" *ngFor="let tweet of tweets">
-    <img src="../../assets/user-logo.png" class="img-icon">
-    <div>
-      <p><b>{{tweet.user.name}}</b> {{tweet.user.userhandle}} . 7h</p>
+  <div class="d-flex main-container" *ngFor = "let tweet of tweets">
+    <img src="../../assets/user-logo.png" class="img-icon mt-2 ml-2">
+    <div class="mt-2">
+      <p><b>{{tweet.user.name}}</b>   @{{tweet.user.userhandle}} . 7h</p>
       <p>{{tweet.content.text}}</p>
-      <div>
+      <div *ngIf="true" class="mr-4">
         <img src="../../assets/Images/nice.jpg">
       </div>
-      <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between mr-5 icons-row">
         <div>
           <i class="fa fa-comment-o" (click)="showModal()" aria-hidden="true"></i>
           <span>572</span>
@@ -28,6 +28,7 @@
     </div>
   </div>
 </div>
+<hr>
     <!--Modal for comment-->
     <div [ngClass]="{'show':display==true}"id="#commentModal"class="modal"tabindex="-1">
        <div class="modal-dialog">

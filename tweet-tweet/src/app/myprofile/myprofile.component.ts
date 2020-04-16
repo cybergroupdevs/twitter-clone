@@ -177,4 +177,11 @@ export class MyprofileComponent implements OnInit {
     }
   }
 
+  redirectToFollowers(user){
+    this.router.navigate(["/profile/" + user +"/followers"]);
+  }
+  redirectToFollowing(user){
+    this.router.navigate(["/profile/" + user +"/following"]);
+  }
+
 }

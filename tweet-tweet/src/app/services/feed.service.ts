@@ -1,8 +1,8 @@
+import { ITweet } from 'src/app/models/tweet.interface';
 import { tap, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpResponse, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { ITweet } from '../models/tweet.interface';
 
 const FEED_API = 'http://localhost:3000/api/tweet';
 
@@ -10,16 +10,8 @@ const FEED_API = 'http://localhost:3000/api/tweet';
     providedIn: 'root'
 })
 export class FeedService{
-    headers: HttpHeaders = new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: localStorage.getItem("Authorization")
-    });
 
-    header_token: HttpHeaders = new HttpHeaders().set("Authentication", localStorage.getItem("Authentication"));
-
-    httpOptions = {
-        headers: this.headers
-    };
+    // header_token: HttpHeaders = new HttpHeaders().set("Authentication", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThiNDhmNjYyYTMzNTY4NDhiNTU5NDciLCJ1c2VyaGFuZGxlIjoic2h1YmhhbV9zaGFybWEiLCJuYW1lIjoiU2h1YmhhbSBTaGFybWEiLCJpYXQiOjE1ODYxODY0ODd9.zu9C-uOolxvCg6nvcaF1Z8g-KqQ16VF3gmC5f8Nrgg0");
 
     private log(message: string) {
         console.log(message);
@@ -28,23 +20,17 @@ export class FeedService{
     constructor(private http: HttpClient){}
 
     showTweets(): Observable<any> {
-        return this.http.get("http://localhost:3000/tweet", {headers: this.header_token, observe: "response"}).pipe(
-            tap(_ => this.log("Showing Details")),
-            catchError(this.handleError<any>('Error Occured'))
-        );
+        return this.http.get("http://localhost:3000/tweet");
     }
 
-    private handleError<T> (operation = 'operation', result?: T) {
+    private handleError<T> (result?: T) {
         return (error: any): Observable<T> => {
-      
+
             // TODO: send the error to remote logging infrastructure
-            console.error(error.status); // log to console instead
-      
-            // TODO: better job of transforming error for user consumption
-            // this.log(`${operation} failed: ${error.message}`);
+            console.error(error); // log to console instead
       
             // Let the app keep running by returning an empty result.
             return of(error as T);
-        };
+          };
     }
 }

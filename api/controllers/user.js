@@ -122,8 +122,13 @@ class UserController{
 
     async search(req, res){
         let queryObject = { $regex: req.params.userhandle, $options: 'i'};
-        const employees = await User.find({userhandle: queryObject}, {name: 1, userhandle: 1}).select('-password');
-        res.status(200).send(employees);
+        const employees = await User.find({userhandle: queryObject}, {name: 1, userhandle: 1});
+        if(employees != null){
+            res.status(200).send(employees);
+        }
+        else{
+            res.status(404).send("Not Found");
+        }
     }
 }
 module.exports = new UserController();

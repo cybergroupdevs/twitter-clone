@@ -6,52 +6,44 @@ class tweets {
     }
 
     async composeTweet(req, res){
-        // if (!req.file) {
-        //     return res.status(200).send({
-        //         success: false
-        //     });
-        // } 
-        // else {
-        try{
-            let _id = (model.tokenDecoder(req.headers.authorization))._id;
-            let retweetId = req.body.retweetId;
-            // let tagsArray = [];
-            // let mentionArray = [];
-            // let countTag = 0, countMention = 0;
-            // let textArray = (req.body.text).split(" ");
-            // for(let index = 0; index < textArray.length; index++){
-            //     if(textArray[index].charAt(0) == "@"){
-            //         mentionArray[countMention] = textArray[index];
-            //         countMention++;
-            //     }
-            //     else if(textArray[index].charAt(0) == "#"){
-            //         tagsArray[countTag] = textArray[index];
-            //         countTag++;
-            //     }
-            // }
-            let tweetObject = {
-                "user" : _id,
-                "content" : {
-                    "text" : req.body.content.text,
-                    // "imageURL" : req.file.path,
-                    // "tags": tagsArray,
-                    // "mentions": (req.body.mentions).split(",")
-                },
-                "date" : Date.now(),
-                "retweetId": retweetId
-            };
-                var result = await model.tweetModel.save(tweetObject);
-
-                if(retweetId){
-                    await model.tweetModel.update({_id:retweetId},{$inc: { "retweetCount": 1 }})
-                }
-                res.status(200).send(result);
-
+        let _id = (model.tokenDecoder(req.headers.authorization))._id;
+        let tagsArray = [];
+        let mentionArray = [];
+        let countTag = 0, countMention = 0;
+        let textArray = [];
+        if(req.body.text != ""){
+            textArray = (req.body.text).split(" ");
+        }
+        for(let index = 0; index < textArray.length; index++){
+            if(textArray[index].charAt(0) == "@"){
+                mentionArray[countMention] = textArray[index];
+                countMention++;
             }
-            catch(err){
-                res.status(400).send(err);
+            else if(textArray[index].charAt(0) == "#"){
+                tagsArray[countTag] = textArray[index];
+                countTag++;
             }
-    
+        }
+        let mentions = [];
+        if(req.body.mentions != ""){
+            mentions = req.body.mentions;
+        }
+        let path = "";
+        if (req.file) {
+            path = req.file.path;
+        } 
+        let tweetObject = {
+            "user" : _id,
+            "content" : {
+                "text" : req.body.text,
+                "imageURL" : path,
+                "tags": tagsArray,
+                "mentions": mentions
+            },
+            "date" : Date.now()
+        };
+        var result = await model.tweetModel.save(tweetObject);
+        return res.status(200).send("Uploaded");
     }
 
     async allTweets(req, res){

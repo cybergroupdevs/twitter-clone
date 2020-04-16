@@ -17,7 +17,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/containers/home.component';
-import{ExploreComponent} from './explore/explore.component';
+import { ExploreComponent } from './explore/explore.component';
 
 const routes: Routes = [
 
@@ -33,20 +33,14 @@ const routes: Routes = [
       path: "home", component: HomeComponent
     },
     {
-      path: "profile", component: ProfileComponent
-    }
-  ]},
-  { path: 'create', component: CreatePostComponent},
-  { path: 'modal', component: EditProfileComponent},
-  {path:"explore",component:ExploreComponent},
-  { path: 'profile',
-    children: [
-   {  path: '', component: MyprofileComponent, 
-      },
-      {
-        path: ':userhandle', component: MyprofileComponent, 
-      },
-      {
+      path: "profile", component: ProfileComponent, children: [
+        {
+          path: "", redirectTo: ":userhandle", pathMatch: "full"
+        },
+        {
+          path: ":userhandle", component: MyprofileComponent
+        },
+        {
         path: ':userhandle',
         children: [
           {
@@ -54,13 +48,35 @@ const routes: Routes = [
           }
         ]
       }
-    ]
-  },
-  {path: "trends", component: TrendsComponent},
-  {path:"feed", component:FeedComponent},
-  {path:"tweetmodal", component:TweetModalComponent},
-  { path: "retweet", component: RetweetComponent}
-
+      ]
+    }
+  ]},
+  { path: 'create', component: CreatePostComponent},
+  { path: 'modal', component: EditProfileComponent},
+  { path: 'explore', component:ExploreComponent},
+  { path: 'temp', component: FeedComponent }
+//   {path:"explore",component:ExploreComponent},
+//   { path: 'profile',
+//     children: [
+//    {  path: '', component: MyprofileComponent, 
+//       },
+//       {
+//         path: ':userhandle', component: MyprofileComponent, 
+//       },
+//       {
+//         path: ':userhandle',
+//         children: [
+//           {
+//             path: ':followers', component: FollowersFollowingComponent
+//           }
+//         ]
+//       }
+//     ]
+//   },
+//   {path: "trends", component: TrendsComponent},
+//   {path:"feed", component:FeedComponent},
+//   {path:"tweetmodal", component:TweetModalComponent},
+//   { path: "retweet", component: RetweetComponent}
 ];
 
 @NgModule({

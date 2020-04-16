@@ -25,19 +25,19 @@ export class TweetCreateComponent {
 
   payload: IJwtPayload = ParseJwt.parseJwt();
 
-  createTweetHandler(text: string){
-    const tweet = {
-      user: this.payload._id,
-      content: {
-        text: text,
-        tags: text.match(/\B\#\w\w+\b/g) || [],
-        imageUrl: "",
-        mentions: []
-      },
-      date: Date.now().toString()
-    }
-    this.tweetService.createTweet(tweet).subscribe((response: HttpResponse<any>) => {
-      console.log(response.body);
-    });
-  }
+  // createTweetHandler(text: string){
+  //   const tweet = {
+  //     user: this.payload._id,
+  //     content: {
+  //       text: text,
+  //       tags: text.match(/\B\#\w\w+\b/g) || [],
+  //       imageUrl: "",
+  //       mentions: []
+  //     },
+  //     date: Date.now().toString()
+  //   }
+  //   this.tweetService.createTweet(tweet).subscribe((response: HttpResponse<any>) => {
+  //     console.log(response.body);
+  //   });
+  // }
 }
