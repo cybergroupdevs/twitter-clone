@@ -9,6 +9,10 @@ import {
   NgbModal,
   ModalDismissReasons
 } from "@ng-bootstrap/ng-bootstrap";
+import { FileUploader } from 'ng2-file-upload';
+
+
+const URL = 'http://localhost:3000/profile'; 
 
 @Component({
   selector: 'app-edit-profile',
@@ -46,11 +50,30 @@ export class EditProfileComponent implements OnInit {
     public activeModal: NgbActiveModal,
   ) {}
 
+   public uploader: FileUploader = new FileUploader({
+      url: URL,
+      itemAlias: 'image'
+    });
+    OnInit() {
+    
+      this.uploader.onAfterAddingFile = (file) => {
+        file.withCredentials = false;
+      };
+      this.uploader.onCompleteItem = (item: any, status: any) => {
+        console.log("=========================", item, status);
+      };
+    }
+
+
   ngOnInit() {
     let currentUserhandle = this.currentUser.userhandle;
     var currentUserId = this.currentUser._id;
     this.loadUserDetails(currentUserId);
   }
+
+  updateImage(){
+  this.uploader.uploadAll()
+  };
 
   loadUserDetails(currentUserId){
     this.userService.userDetails(currentUserId).subscribe(res => {

@@ -42,6 +42,7 @@ h5{
 h4{
     font-size: 1.5rem;
     font-weight: 400;
+    color: black;
 }
 
 .card-link{
@@ -55,6 +56,7 @@ h4{
     flex-direction: row;
     position: relative;
     font-size: 1.5rem;
+    color: black;
 }
 
 .trend-head #angle-down{
@@ -123,6 +125,7 @@ li :hover{
     min-width: 40px; 
     font-size: 1.8rem;
     padding-top: 12px;
+    color:darkgray;
 
 } 
   

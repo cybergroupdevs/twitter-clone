@@ -9,6 +9,7 @@ import { IFollower, IUnfollow } from "../models/follow.interface";
 import { IUser, IJwtPayload } from "../models/user.interface";
 import { Router, ActivatedRoute, Params,NavigationEnd } from "@angular/router";
 import { MatDialog } from "@angular/material/dialog";
+
 import {
   NgbModal,
   ModalDismissReasons
@@ -83,6 +84,7 @@ export class MyprofileComponent implements OnInit {
     }
    
   }
+ 
 
    checkRelation(checkObj){
      this.followService.getRelation(checkObj).subscribe(res => {
@@ -110,7 +112,7 @@ export class MyprofileComponent implements OnInit {
    
    editProfileModal(){
     this.open(EditProfileComponent);
-   }
+  }
 
    loadSearchedUserDetails(searchedUser){
     this.userService.searchedUserDetails(searchedUser).subscribe(res => {

@@ -90,6 +90,7 @@ class UserController{
 
     async getProfileByUserhandle (req,res){
         const userhandle=req.params.userhandle;
+        console.log(userhandle)
         const user = await User.findOne({"userhandle":userhandle}).select('-password');
         if(user!= null){
             res.status(200).send(user);
@@ -99,12 +100,15 @@ class UserController{
                 "message": "Unauthorized"
             });
         }
-      
+        console.log(user);
     };
     
     async updateProfile(req,res) {
             try{
-            let updateObj= req.body;
+            let updateObj = {
+                "profileImageURL" : req.file.path,
+               
+            };
             const user= await User.update({_id: req.params.id},  updateObj);
             res.status(200).send({success: true,
                 payload: {
@@ -112,10 +116,8 @@ class UserController{
                 });
             }
             catch(error){
-                console.log(error);
-            }
-        
-        
+                return res.status(501).send("Some Error Occured");
+            }  
     }
 
     async search(req, res){
