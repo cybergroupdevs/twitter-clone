@@ -10,9 +10,10 @@
     <div class="row-top">
       <div class="user-wrapper">
          <span ><img class="user-image" src="{{profile.images}}"></span>
+         <span class="edit" *ngIf="user?.userhandle === currentUser?.userhandle" (click) = "editProfileModal()">Edit Profile</span>
       </div>
 
-      <span class="edit" *ngIf="user?.userhandle === currentUser?.userhandle" (click) = "editProfileModal()">Edit Profile</span>
+      
        <div *ngIf="user?.userhandle !== currentUser?.userhandle">
         <div *ngIf="!follow">
           <button class="edit" (click)="handleFollow()">Follow</button>
@@ -45,35 +46,29 @@
     </div>
     
       <span class="count">
-        <b>{{user.followerCount}}</b> Followers
+        <div class="followerCount" (click)=redirectToFollowers(user.userhandle)>
+          <b>{{user.followerCount}}</b> Followers 
+        </div>
+       <div class="followingCount" (click)=redirectToFollowing(user.userhandle)>
+        <b>{{user.followingCount}}</b> Following
+       </div>
       </span>
-    <span class="count">
-       <b>{{user.followingCount}}</b> Following
 
-        </span>
-  
-        <span class="count">
-          <b>{{user.followerCount}}</b> Followers
-        </span>
-        <span class="count">
-          <b>{{user.followingCount}}</b> Following
-        </span>
-
-        <div class="row-bottom">
+      <div class="row-bottom">
+        <small class="followers">
+          Tweets
+          </small>
           <small class="followers">
-            Tweets
-            </small>
+            Tweets & Replies
+          </small>
             <small class="followers">
-             Tweets & Replies
+            Media
             </small>
-             <small class="followers">
-              Media
-             </small>
-            <small class="followers">
-              Likes
-            </small>
-          </div>
-          <div class="row-bottom"></div>
+          <small class="followers">
+            Likes
+          </small>
+        </div>
+        <div class="row-bottom"></div>
   </div>
   </div>
 </div>

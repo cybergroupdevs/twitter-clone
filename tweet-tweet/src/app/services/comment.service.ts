@@ -12,7 +12,8 @@ const COMMENT_API: string = 'http://localhost:3000';
 })
 export class CommentService {
   headers: HttpHeaders = new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    Authorization: localStorage.getItem("Authorization")
   });
   httpOptions = {
     headers: this.headers

@@ -14,15 +14,21 @@ const USER_DOMAIN: string = 'http://localhost:3000';
 })
 export class UserService {
     headers: HttpHeaders = new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: localStorage.getItem("Authorization")
+    });
+    signupHeader: HttpHeaders= new HttpHeaders({
         'Content-Type': 'application/json'
     });
-
     header_token: HttpHeaders = new HttpHeaders().set("Authentication", localStorage.getItem("Authentication"));
     
     httpOptions = {
         headers: this.headers
     };
-
+    options = {
+    headers: this.signupHeader
+    }
+    
     constructor(private http: HttpClient){}
 
     private log(message: string) {
@@ -30,12 +36,16 @@ export class UserService {
     }
 
     createUser(user: IUser): Observable<HttpResponse<any>>{
-        return this.http.post<any>(`${USER_DOMAIN}/signup`, user, { ...this.httpOptions, observe: 'response' });
+        return this.http.post<any>(`${USER_DOMAIN}/signup`, user, { ...this.options, observe: 'response' });
     }   
 
     loginUser(user: Login): Observable<HttpResponse<any>>{
-        return this.http.post<any>(`${USER_DOMAIN}/login`, user, { ...this.httpOptions, observe: 'response' });
+        return this.http.post<any>(`${USER_DOMAIN}/login`, user, { ...this.options, observe: 'response' });
     }
+
+    updateUser(user: any, _id:string): Observable<HttpResponse<any>>{
+        return this.http.patch<any>(`${USER_DOMAIN}/profile/${_id}`, user, { ...this.httpOptions, observe: 'response' });
+    }   
 
     searchUser(name:string): Observable<any>{
         return this.http.get("http://localhost:3000/user/"+name);

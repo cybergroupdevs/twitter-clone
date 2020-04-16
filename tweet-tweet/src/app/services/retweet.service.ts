@@ -11,7 +11,7 @@ const RETWEET_API = 'http://localhost:3000/api/';
 export class likeService{
     headers: HttpHeaders = new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': localStorage.getItem('Authorization')
+        Authorization: localStorage.getItem("Authorization")
     });
     headerOptions = {
         header: this.headers

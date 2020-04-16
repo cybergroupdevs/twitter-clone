@@ -11,7 +11,7 @@ const FOLLOW_API = 'http://localhost:3000';
 export class FollowService{
     headers: HttpHeaders = new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': localStorage.getItem('Authorization')
+        Authorization: localStorage.getItem("Authorization")
     });
     httpOptions = {
         headers: this.headers

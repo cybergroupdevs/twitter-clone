@@ -14,6 +14,13 @@ export class ProfileService {
   private log(message: string) {
     console.log(message);
   }
+  headers: HttpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    Authorization: localStorage.getItem("Authorization")
+});
+headerOptions = {
+    header: this.headers
+}
   header_token: HttpHeaders = new HttpHeaders().set("token", localStorage.getItem("Authorization"));
 
   private handleError<T> (operation = 'operation', result?: T) {
@@ -31,7 +38,7 @@ export class ProfileService {
     }
  
   profileData(id): Observable<any>{
-    return this.http.get("http://localhost:3000/profile/"+id, {observe: 'response', headers: this.header_token}).pipe(
+    return this.http.get("http://localhost:3000/profile/"+id, {...this.headerOptions, observe: 'response'}).pipe(
       tap(_ => this.log("profile details")),  
     catchError(this.handleError<any>('error in details')
     ));

@@ -2,45 +2,102 @@
     <div class="card-body">
         <span><i class="fa fa-arrow-left" id="arrow-left" ></i></span>
         <span>
-            <h3 class="card-title">username</h3>
-            <h4 class="card-title">@userhandle</h4>
+            <h3 class="card-title-name">{{currentUsername}}</h3>
+            <h4 class="card-title-handle">@{{currentUserhandle}}</h4>
         </span>
     </div>
     <div class="header">
-        <div class="card-body-title">Followers</div>
-        <div class="card-body-title">Following</div>
+        <div class="card-body-title" (click)="showFollowers()" [style.color]="isListingFollowers ? ' rgba(29,161,242,1.00)' : 'black'" [style.border-bottom]="isListingFollowers ? '2px solid #1da1f2' : '1px solid lightgrey'">
+            Followers
+        </div>
+        <div class="card-body-title" (click)="showFollowing()"  [style.color]="isListingFollowing ? ' rgba(29,161,242,1.00)' : 'black'" [style.border-bottom]="isListingFollowing ? '2px solid #1da1f2' : '1px solid lightgrey'">
+            Following
+        </div>
     </div>
     
-
-    <!-- <ul class="list-group list-group-flush" >
-      <li class="list-group-item" *ngFor="let trend of Trend | slice:0:5" let i="index">
+    <ul class="list-group list-group-flush" [style.display]="isListingFollowers ? 'block': 'none'"> 
+        <li class="list-group-item" *ngFor="let follower of followersList">
+          <div class="list-body">
+              <div class="card-body" (click)="redirectToClickedUser(follower.followers.follower.userhandle)">
+                  <span>
+                      <h4 class="card-title-header">{{follower.followers.follower.name}}</h4>
+                      <div class="card-title-body" id="isFollowerDiv">
+                          <h4>@{{follower.followers.follower.userhandle}} </h4>&nbsp;&nbsp;
+                          <h4 id="isFollower">Follows you</h4>
+                      </div>
+                      <h4 class="card-title-footer">{{follower.followers.follower.bio}}</h4>
+                  </span>
+                  <span >
+                    <div *ngIf="currentUserhandle !== currentUser.userhandle" >
+                        <p hidden>whatever logic</p>
+                        <div *ngIf="!follower.isCurrentUserFollowing">
+                            <button class="btn" id="follow-btn" (click)="follow(follower.followers.follower.userhandle)">Follow</button>
+                        </div>
+                        <div *ngIf="follower.isCurrentUserFollowing">
+                            <button class="btn" id="unfollow-btn" (click)="unfollow(follower.followers.follower.userhandle)">
+                                <span class="following">Following</span>
+                                <span class="unfollow">Unfollow</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div *ngIf="currentUserhandle === currentUser.userhandle" >
+                      <div *ngIf="!follower.hasRelation">
+                        <button class="btn" id="follow-btn" (click)="handleFollow(follower.followers.follower.userhandle)">Follow</button>
+                      </div>
+                      <div *ngIf="follower.hasRelation">
+                        <button class="btn" id="unfollow-btn" (click)="handleUnfollow(follower.followers.follower.userhandle)">
+                            <span class="following" *ngIf="follower.hasRelation">Following</span>
+                            <span class="unfollow">Unfollow</span>
+                        </button>
+                      </div>
+                    </div>
+                  </span>
+              </div>
+          
+          </div>
+        </li>
+        
+    </ul>
+    
+    <ul class="list-group list-group-flush" [style.display]="isListingFollowing ? 'block' : 'none'"> 
+      <li class="list-group-item" *ngFor="let following of followingList">
         <div class="list-body">
-        <div class="trend-head">
-            {{trend.trendingIn}}<br>
-            <i class="fa fa-angle-down" id="angle-down" aria-hidden="true" (click)="dropdownShow(trend._id)"></i>
-            <div class="dropdown" id="modal" tabindex="-1" role="dialog" [style.display]="isDropdownClicked[trend._id] ? 'block' : 'none'">
-                <div class="modal-body">
-                <ul >
-                    <li class="list-dialog" *ngFor="let dialogs of ModalDialog">
-                        <span class="dialog">
-                            <i class="fa fa-frown-o"  id="frown" aria-hidden="true"></i>
-                            {{dialogs.message}}<br>                    
-                        </span>
-                    </li>
-                </ul>          
-                </div>
-            </div> 
-        </div>
-        <h5>#{{trend.hashtag}}</h5>
-        <h4>{{trend.tweets}} tweets</h4>
+            <div class="card-body" (click)="redirectToClickedUser(following.following.following.userhandle)">
+                <span>
+                    <h4 class="card-title-header">{{following.following.following.name}}</h4>
+                    <div class="card-title-body" id="isFollowingDiv">
+                        <h4>@{{following.following.following.userhandle}}</h4>&nbsp;&nbsp;
+                        <h4 id="isFollower" *ngIf="following.hasRelation">Follows you</h4>
+                    </div>
+                    <h4 class="card-title-footer">{{following.following.following.bio}}</h4>
+                </span>
+                <span>  
+                    <div *ngIf="currentUserhandle !== currentUser.userhandle" >
+                        <p hidden>whatever logic</p>
+                        <div *ngIf="!following.isCurrentUserFollowing">
+                            <button class="btn" id="follow-btn" (click)="follow(following.following.following.userhandle)">Follow</button>
+                        </div>
+                        <div *ngIf="following.isCurrentUserFollowing">
+                            <button class="btn" id="unfollow-btn" (click)="unfollow(following.following.following.userhandle)">
+                                <span class="following">Following</span>
+                                <span class="unfollow">Unfollow</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div *ngIf="currentUserhandle === currentUser.userhandle">        
+                        <button class="btn" id="unfollow-btn" (click)="handleUnfollow(following.following.following.userhandle)">
+                            <span class="following">Following</span>
+                            <span class="unfollow">Unfollow</span>
+                        </button>
+                    </div>
+                </span>
+            </div>
+        
         </div>
       </li>
       
     </ul>
     
-    <div class="card-body">
-      <a class="btn btn-link" (click)="showMore()">Show more</a>
-    </div> -->
   </div>
 
   

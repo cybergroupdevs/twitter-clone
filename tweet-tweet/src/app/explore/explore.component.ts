@@ -27,10 +27,10 @@ data:any;
        
    
       this.data=res;
-       console.log(this.data);
+       (this.data);
 
     })
-    console.log(obj);
+  
   }
 
 }

@@ -1,0 +1,60 @@
+.icon:hover{
+    background-color: #F5F8FA;
+    cursor: pointer;
+    border-radius: 30px;
+}
+.icon{
+    font-size: 2.5rem;
+    color: #00aced;
+    padding: 1rem;
+}
+.tweet{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    background-color: #A5D9FA;
+    border-radius: 30px;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+}
+.modal-dialog{
+  max-height:40rem;
+   border-radius:10%;
+    width:80rem;
+}
+.modal-content{
+    height:40rem;
+   
+}
+.user-image{
+    height: 5rem;
+    width: 5rem;
+    object-fit: cover;
+    border-radius: 30px;
+    margin-right: 1.5rem;
+}
+.tweet-area{
+    font-size: 2rem;
+    width: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    border: none;
+    outline: none;
+    resize: none;
+    color: black;
+}
+.close{
+    color: #00aced; 
+    font-size:2.5rem;
+    margin:0;
+    outline:none;
+}
+.close:hover{
+    
+    background-color:#ecf7fc;
+    cursor: pointer;
+    border-radius: 50%;
+   
+}
+#modal{
+    border-radius:20%;
+}

@@ -23,20 +23,20 @@ let upload = multer({storage: storage});
 module.exports = (app) => {
 
     app.post('/tweet', upload.single('image'), controller.tweet.composeTweet);
-    app.get('/tweet', controller.tweet.allTweets);
+    app.get('/tweet',authenticator, controller.tweet.allTweets);
     app.post('/signup', controller.user.signup);
     app.post('/login', controller.user.login);
-    app.get('/user/:userhandle', controller.user.search);
-    app.get('/profile/:id', controller.user.getProfile);
-    app.get('/redirectedProfile/:userhandle', controller.user.getProfileByUserhandle);
-    app.patch('/profile/:id', controller.user.updateProfile);
-    app.post('/follow',controller.follow.follow);
-    app.post('/unfollow',controller.follow.unfollow);
-    app.post('/relation',controller.follow.checkRelation);
-    app.post('/comment',controller.comment.comment);
-    app.post('/like',controller.likeTweet.updateLike);
-    app.put('/unlike',controller.unlikeTweet.unlike);
-    app.get('/explore',controller.explore.getExploreTweets);
+    app.get('/user/:userhandle',authenticator, controller.user.search);
+    app.get('/profile/:id', authenticator,controller.user.getProfile);
+    app.get('/redirectedProfile/:userhandle',authenticator, controller.user.getProfileByUserhandle);
+    app.patch('/profile/:id',authenticator, controller.user.updateProfile);
+    app.post('/follow',authenticator, controller.follow.follow);
+    app.post('/unfollow', authenticator, controller.follow.unfollow);
+    app.post('/relation',authenticator, controller.follow.checkRelation);
+    app.post('/comment',authenticator ,controller.comment.comment);
+    app.post('/like',authenticator, controller.likeTweet.updateLike);
+    app.put('/unlike',authenticator, controller.unlikeTweet.unlike);
+    app.get('/explore',authenticator, controller.explore.getExploreTweets);
     app.get('/followers/:userhandle',controller.follow.getFollowersData);
     app.get('/following/:userhandle',controller.follow.getFollowingData);
 }

@@ -62,7 +62,7 @@ router.get('/:id', async (req, res) => {
         res.send(userDetails);
     } 
     catch (error) {
-        Console.log(error)
+        console.log(error);
     }
 });
 

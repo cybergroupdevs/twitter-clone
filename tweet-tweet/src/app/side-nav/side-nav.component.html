@@ -9,7 +9,7 @@
           <i  class="fa fa-home"aria-hidden="true"></i>
           <span >Home</span>
         </a>
-        <a mat-list-item (click)="toggle($event)"class="for-hover">
+        <a mat-list-item (click)="toggle($event)"routerLink="/explore"class="for-hover">
           <i class="fa fa-hashtag" aria-hidden="true"></i>
           <span>Explore</span>
         </a>
@@ -39,7 +39,7 @@
           <span>Logout</span>
         </a>
       </mat-nav-list>
-      <a class="tweet-main-btn btn">Tweet</a>
+      <a class="tweet-main-btn btn"(click)="showModal()">Tweet</a>
     </div>
   </mat-sidenav>
   <mat-sidenav-content class="main-content-big mr-0">

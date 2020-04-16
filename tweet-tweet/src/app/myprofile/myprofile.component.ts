@@ -7,7 +7,7 @@ import { Profile } from './../models/profile.interface';
 import { HttpResponse } from "@angular/common/http";
 import { IFollower, IUnfollow } from "../models/follow.interface";
 import { IUser, IJwtPayload } from "../models/user.interface";
-import { Router, ActivatedRoute, Params } from "@angular/router";
+import { Router, ActivatedRoute, Params,NavigationEnd } from "@angular/router";
 import { MatDialog } from "@angular/material/dialog";
 import {
   NgbModal,
@@ -51,7 +51,18 @@ export class MyprofileComponent implements OnInit {
     private route: ActivatedRoute,
     // public dialog: MatDialog,
     private modalService: NgbModal,
-    ) {}
+    ) {
+      this.router.events.subscribe(event => {
+
+        if (event instanceof NavigationEnd) {
+  
+          // close all open modals
+          this.modalService.dismissAll();        
+  
+        }
+  
+      });
+    }
   
 
   ngOnInit() {
@@ -107,7 +118,7 @@ export class MyprofileComponent implements OnInit {
         this.user = res.body;
       }
       else if(res.status == 401){
-        localStorage.removeItem("token");
+        localStorage.removeItem("Authorization");
         this.router.navigate(['/login']);
       }
     });
@@ -126,7 +137,6 @@ export class MyprofileComponent implements OnInit {
   }
 
   handleUnfollow(): void {
-    debugger
     this.followService.unfollow({
         userhandle: this.searchedUser,
         followerhandle: this.currentUser.userhandle
@@ -163,6 +173,13 @@ export class MyprofileComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  redirectToFollowers(user){
+    this.router.navigate(["/profile/" + user +"/followers"]);
+  }
+  redirectToFollowing(user){
+    this.router.navigate(["/profile/" + user +"/following"]);
   }
 
 }

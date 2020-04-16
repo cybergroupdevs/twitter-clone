@@ -8,6 +8,8 @@
   background: var(white);
 
 }
+
+
 .twitter{
   position:absolute;
     max-height: 150px;
@@ -38,19 +40,20 @@
 }
 
 .edit{
-  position: absolute;
-  margin-left: 350px;
+  margin-top: 160px;
+  margin-left: 250px;
   font-size: medium;
-  padding: 0px 20px;
+ position:absolute;
   border-style: solid;
   border-radius: 30px;
+  padding: 0px 15px;
   color:#38A1F3;
   font-weight:bold;
   transition: all .2s ease-out;
 }
 
 .edit:hover{
-  background-color: #38A1F3;
+  background-color:#EAFAF2;
   color: var(white);
   cursor: pointer;
 }
@@ -195,4 +198,23 @@
   background-color:	#EAFAF2;
   color:#00BFFF;
   cursor: pointer;
+}
+
+.followerCount:hover{
+  border-bottom: 1px solid black;
+}
+
+.followingCount:hover{
+  border-bottom: 1px solid black;
+}
+
+.count{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  cursor: pointer;
+}
+
+.followerCount{
+  margin-right: 2rem;
 }

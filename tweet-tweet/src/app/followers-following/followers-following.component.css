@@ -4,11 +4,50 @@
     font-weight: lighter;
     padding: 1rem;
     margin-right: 30px;
+    border-radius: 50%;
+    border: 1px;
+}
+
+#arrow-left:hover{
+    background-color: rgb(220, 231, 238);
+}
+
+.card-title-name{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    color: black;
+    font-weight: 800;
+}
+
+.card-title-handle{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    color: grey;
+    font-weight: 300;
+    font-size: small;
+}
+
+.card-title-header{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    color: black;   
+    font-weight: 700;
+    font-size: initial;
+}
+
+.card-title-body h4{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    color: grey;   
+    font-weight: 100;
+}
+
+.card-title-footer{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    color: black;   
+    font-weight: 400;
 }
 
 .card-body{
     display: flex;
     justify-content: flex-start;
+    position: relative;
 }
 
 .header{
@@ -17,14 +56,126 @@
 }
 
 .card-body-title:hover{
-    background-color: rgba(29,161,242,1.00);
+    color: rgba(29,161,242,1.00) !important;
+    background-color:  rgb(220, 231, 238);
 
 }
 
 .card-body-title{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    width: 50%;
+    text-align: center;
+    border-bottom: 1px solid;
+    border-bottom-color: lightgrey;
+    font-weight: 800;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    height: 5rem;
+    padding-top: 1.3rem;
 }
 
 .card{
     width:45vw;
+}
+
+.btn{
+    font-size: medium;
+    border-style: solid;
+    border-radius: 30px;
+    background-color:#38A1F3;
+    color: white;
+    font-weight:bold;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    position: absolute;
+    right: 0;
+}
+
+#isFollowerDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#isFollowingDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#isFollower{
+    border-radius: 4px;
+    background-color:  rgb(220, 231, 238);
+    font-size: larger;
+    padding: 3px;
+}
+
+.btn .unfollow { 
+    display: none;
+  }
+  
+.btn:hover .following {
+    display: none; 
+}
+
+.btn:hover .unfollow{
+    display: inline;
+}
+
+#unfollow-btn:hover{
+    background-color: rgb(136, 10, 10);
+    cursor: pointer;
+}
+
+#follow-btn{
+    color:#38A1F3;
+    border: 1px solid #38A1F3;
+    background-color: white;
+}
+
+li:hover{
+    background-color: rgb(230, 236, 240);
+}
+
+@media only screen 
+  and (max-device-width: 320px) 
+{
+    *{
+        overflow-wrap: break-word;
+        overflow: hidden;
+    }
+}
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 499px)
+{
+    .card{
+        width:100vw;
+    }
+}
+
+@media only screen 
+  and (min-device-width: 500px) 
+  and (max-device-width: 768px) 
+{
+    .card{
+        width:80vw;
+    }
+}
+
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1005px) 
+{
+    .card{
+        width:70vw;
+    }
+}
+
+@media screen 
+  and (min-device-width: 1006px) 
+  and (max-device-width: 1282px) 
+{ 
+    .card{
+        width:60vw;
+    }  
 }
