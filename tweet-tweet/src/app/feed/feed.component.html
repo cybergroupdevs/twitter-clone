@@ -13,11 +13,11 @@
           <span>572</span>
         </div>
         <div>
-          <i class="fa fa-retweet" aria-hidden="true"></i>
+          <i class="fa fa-retweet"(click)="showRetweetModal()" aria-hidden="true"></i>
           <span>572</span>
         </div>
-        <div  (click)="onSelect(feed._id,feed)">
-          <i class="fa fa-heart-o" [ngClass]="{'selected':tweet.isClicked==true}" aria-hidden="true"></i>
+        <div  (click)="onSelect(tweet)">
+          <i class="fa fa-heart-o" [ngClass]="{'selected':isClicked==true}" aria-hidden="true"></i>
           <span>572</span>
         </div>
         <div>
@@ -29,42 +29,4 @@
   </div>
 </div>
 <hr>
-    <!--Modal for comment-->
-    <div [ngClass]="{'show':display==true}"id="#commentModal"class="modal"tabindex="-1">
-       <div class="modal-dialog">
-         <div class="modal-content">
-            <div class="modal-header">           
-              <button class="close "data-dismiss="modal"(click)="closeModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-              <div class="handler">
-              <a class="avatar avatar-online" href="javascript:void(0)">
-                <img  src="../assets/Images/image.jpeg">
-              </a>
-              <div >
-                 <div class="text-muted pull-right" >Amitabh</div>
-                  <div class="media-heading">{{comment.user}}</div>
-                  <div class="media">{{comment.tweet}}</div>
-                  <div class="content" >{{comment.comment}}</div>
-              </div>
-             </div> 
-             <div >
-             <a class="avatar avatar-online" href="javascript:void(0)">
-              <img  src="../assets/Images/image.jpeg">
-            </a>
-
-              <textarea placeholder="Tweet your reply ?" class="tweet-area" (keyup)="check($event)" [(ngModel)]="textArea"></textarea>
-             </div> 
-
-          </div>
-          <div class="modal-footer">
-            <div class="d-flex align-items-center buttons">
-              <a><i class="fa fa-picture-o icon2 mr-2" aria-hidden="true"></i></a>
-              <a><i class="fa fa-tasks icon2 mr-2" aria-hidden="true"></i></a>
-              <a><i class="fa fa-git-square icon2 special mr-2" aria-hidden="true"></i></a>
-              <a><i class="fa fa-smile-o icon2 special mr-2" aria-hidden="true"></i></a>
-              <button class="btn tweet ml-auto" >Reply</button>
-          </div>
-        </div>
-      </div>
-    </div>
+   

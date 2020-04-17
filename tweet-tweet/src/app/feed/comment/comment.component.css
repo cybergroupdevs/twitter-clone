@@ -1,41 +1,33 @@
+.modal-content{
+    border-radius: 1.3rem;
+} 
+.handler{
+    display:flex;
+    flex-wrap:nowrap;
+     top:-10px;
+} 
+.avatar {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    white-space: nowrap;
+    border-radius: 1000px;
+    vertical-align: bottom;
+    margin-top: 10px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    margin-right:20px;
+}
 i{
     color: black;
     font-size: 18px;
     font-weight: lighter;
 }
-
-p{
-    color: black;
-    font-size: 15px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
-}
-
-.img-icon{
-    height: 5rem;
-    width: 5rem;
-    object-fit: cover;
-    border-radius: 30px;
-    margin-right: 1.5rem;
-}
-
-span{
-    color: black;
-    font-size: 13px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
-    margin-left: 1rem;
-}
-
-img{
-    height: 25rem;
-    width: 100%;
-    object-fit: cover;
-    margin-right: 0.8rem;
-    margin-bottom: 1.8rem;
-}
-
 .fa:hover{
-    color: skyblue; 
-  
+    background-color: #F5F8FA;
+    padding: 0.8rem;
     cursor: pointer;
     border-radius: 30px;
 }
@@ -49,55 +41,20 @@ img{
     margin-bottom: 1rem;
     padding-bottom: 1rem;
 }
-
-.main-container:hover{
-    background-color: #F5F8FA;
-}
-
-.feed{
-    margin-top: 260px;
-}
-.modal-content{
-    border-radius: 1.3rem;
-}
-.avatar {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    white-space: nowrap;
-    border-radius: 1000px;
-    vertical-align: bottom;
-    margin-top: 10px;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    object-fit: cover;
-}
-.media-body{
-    margin-top: 30px;
-    max-width: 400vw;
-    padding: 1px 20px;
-}
-
 .avatar img {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     object-fit: cover;
     margin-top: 80%;
-    width: 100%;
+    width: 40px;
     max-width: 100vw;
-    /* height: 100%; */
+    height:50px;
     border-radius: 1000px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
-.image{
-    max-width: 3rem;
-    max-height: 50rem;
-    border-radius: 10rem;
-    border-radius: 100px;
-}
+
 .media-heading{
     color: black;
     font-size: 20px;
@@ -141,15 +98,7 @@ img{
     
 }
 
-.content-image{
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    object-fit: cover;
-    max-height: 40rem;
-    max-width: 45rem;
-    border-radius: 10px;
-}
+
 .show{
     display:block;
 }
@@ -174,20 +123,15 @@ img{
 }
 
 .icon{
-   
     position: relative;
     font-size: medium;
-  border-radius: 30px;
-  color:gray;
-  font-weight:bold;
-  transition: all .2s ease-out;
-  justify-content: space-evenly;
+    border-radius: 30px;
+    color:gray;
+    font-weight:bold;
+    transition: all .2s ease-out;
+    justify-content: space-evenly;
 }
- .handler{
-    display:flex;
-    flex-wrap:nowrap;
-     top:-10px;
-} 
+ 
 .tweet-area{
     font-size: 2rem;
     width: 100%;
@@ -205,13 +149,13 @@ img{
     color: #00aced; 
     font-size:2.5rem;
     margin:0;
+    outline:none;
 }
 .close:hover{
     
     background-color:#ecf7fc;
     cursor: pointer;
     border-radius: 50%;
-   
 }
 .icon:hover{
    background-color:#EAFAF2;

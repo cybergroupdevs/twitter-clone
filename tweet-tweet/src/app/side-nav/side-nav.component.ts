@@ -60,13 +60,9 @@ export class SideNavComponent implements OnInit{
 
   showModal(){
     this.open(TweetModalComponent);
-  }
+    }
   
-    toggle(event:any){
-       this.isClicked=!this.isClicked;
-       this.render.setElementClass(event.target,"selected",true);
-       this.myprofileComponent.loadSearchedUserDetails(this.currentUserhandle);
-      }
+  
  
   open(content) {
     this.modalService
