@@ -1,3 +1,5 @@
+import { CommentComponent } from './comment/comment.component';
+import { RetweetComponent } from './retweet/retweet.component';
 import { ITweet } from 'src/app/models/tweet.interface';
 import { FeedService } from 'src/app/services/feed.service';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -7,6 +9,7 @@ import { Feed } from './../models/feed.interface';
 import { likeService } from'../services/like.service';
 import { ILike } from '../models/like.interface';
 import{MatDialog,MatDialogConfig} from'@angular/material'
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 
 
 @Component({
@@ -31,12 +34,14 @@ export class FeedComponent implements OnInit {
     private likeService:likeService,
     private JsonDecoderService:JsonDecoderService,
     private dialog: MatDialog,
-    private feedService: FeedService ) { }
+    private feedService: FeedService,
+    private modalService: NgbModal ) { }
 
   ngOnInit() {
     console.log('Inside ngOnInit');   
     this.feedService.showTweets().subscribe(res => {
       this.tweets = res;
+      console.log(this.tweets);
     });
   }
 
@@ -56,16 +61,16 @@ export class FeedComponent implements OnInit {
   }
 
   
- 
-  onSelect(id:string, feed:Feed){
+  isClicked:boolean=false;
+  onSelect(feed:Feed){
     this.selectedFeed=feed;
-    this.selectedFeed.isClicked=!this.selectedFeed.isClicked;
+     this.isClicked=!this.isClicked;
     const tokenPayload=this.JsonDecoderService.jsonDecoder(localStorage.getItem("Authorization"));
     this.likeObj={
-      tweetId:"5e8351537f1fe49ec0039173",//hardcoded value
+      tweetId:feed._id,//hardcoded value
       userId:tokenPayload._id
     }
-   
+    
     this.likeService.like(this.likeObj).subscribe((res:any) => {
       this.message=res.payload.message;
     },err => {
@@ -75,15 +80,37 @@ export class FeedComponent implements OnInit {
 
 display:boolean=false;
 showModal(){
-    this.display=true;
-    document.getElementById("feed").style.opacity="0.5";
-    document.body.setAttribute('style', 'overflow: hidden;'); 
+   
+    this.open(CommentComponent);
 }
-closeModal(){
-  this.display=false;
- document.getElementById("feed").style.opacity="1";
-  document.body.setAttribute('style', 'overflow: scroll;');
+showRetweetModal(){
+ this.open(RetweetComponent);
+ 
 }
+open(content) {
+  this.modalService
+    .open(content)
+    .result.then(
+      result => {
+      
+        this.closeResult = `Closed with: ${result}`;
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    );
+}
+
+private getDismissReason(reason: any): string {
+  if (reason === ModalDismissReasons.ESC) {
+    return "by pressing ESC";
+  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    return "by clicking on a backdrop";
+  } else {
+    return `with: ${reason}`;
+  }
+}
+
 
   Feed: Feed[]=[
     {_id:"1",photos: '../../assets/Images/image.jpeg',text:'.Just Now',title:'Anchal',name:'@anchal_hora',description:'A flower, sometimes known as a bloom or blossom. Every flower paint contrasting colors along the ground and bring joy.',newphoto:'../../assets/Images/myimage.jpg',isClicked:false},
@@ -99,9 +126,5 @@ closeModal(){
     {message: "This trend is low quality"},
   ]
 
-  comment:any={
-     user:"amitabh",
-     tweet:"corona has locked us in our homes,but it is a great time for learning and self introspection",
-     comment:"very true said amitabh"
-    }
+  
   }

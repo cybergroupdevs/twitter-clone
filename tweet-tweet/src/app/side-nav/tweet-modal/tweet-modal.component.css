@@ -19,12 +19,11 @@
 }
 .modal-dialog{
   max-height:40rem;
-   border-radius:10%;
+  border: 0px !important;
     width:80rem;
 }
 .modal-content{
     height:40rem;
-   
 }
 .user-image{
     height: 5rem;

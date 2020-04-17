@@ -20,7 +20,7 @@ export class SideNavComponent implements OnInit{
    isClicked:boolean = false;
    userhandle: string;
    currentUser: IJwtPayload = ParseJwt.parseJwt();
-   currentUserhandle= this.currentUser.userhandle;
+   currentUserhandle = this.currentUser.userhandle;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -61,12 +61,6 @@ export class SideNavComponent implements OnInit{
   showModal(){
     this.open(TweetModalComponent);
   }
-  
-    toggle(event:any){
-       this.isClicked=!this.isClicked;
-       this.render.setElementClass(event.target,"selected",true);
-       this.myprofileComponent.loadSearchedUserDetails(this.currentUserhandle);
-      }
  
   open(content) {
     this.modalService
@@ -91,6 +85,8 @@ export class SideNavComponent implements OnInit{
       return `with: ${reason}`;
     }
   }
-  ngOnInit():void{
+
+  ngOnInit(){
+    // userhandle = this.
   }
 }

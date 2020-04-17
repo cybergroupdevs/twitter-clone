@@ -1,4 +1,8 @@
-/* i{
+.outside-container{
+    margin-top: 10rem;
+}
+
+i{
     color: black;
     font-size: 18px;
     font-weight: lighter;
@@ -34,8 +38,8 @@ img{
 }
 
 .fa:hover{
-    background-color: #F5F8FA;
-    padding: 0.8rem;
+    color: skyblue; 
+  
     cursor: pointer;
     border-radius: 30px;
 }
@@ -53,7 +57,12 @@ img{
 .main-container:hover{
     background-color: #F5F8FA;
 }
-*/
+
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> d233c0ec2dcfc05f88704b3dacefb9e7834967ad
 .feed{
     margin-top: 260px;
 }
