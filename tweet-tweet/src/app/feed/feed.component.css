@@ -34,8 +34,8 @@ img{
 }
 
 .fa:hover{
-    background-color: #F5F8FA;
-    padding: 0.8rem;
+    color: skyblue; 
+  
     cursor: pointer;
     border-radius: 30px;
 }

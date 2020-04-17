@@ -41,6 +41,7 @@ export class FeedComponent implements OnInit {
     console.log('Inside ngOnInit');   
     this.feedService.showTweets().subscribe(res => {
       this.tweets = res;
+      console.log(this.tweets);
     });
   }
 
@@ -60,13 +61,13 @@ export class FeedComponent implements OnInit {
   }
 
   
- 
-  onSelect(id:string, feed:Feed){
+  isClicked:boolean=false;
+  onSelect(feed:Feed){
     this.selectedFeed=feed;
-    this.selectedFeed.isClicked=!this.selectedFeed.isClicked;
+     this.isClicked=!this.isClicked;
     const tokenPayload=this.JsonDecoderService.jsonDecoder(localStorage.getItem("Authorization"));
     this.likeObj={
-      tweetId:"5e8351537f1fe49ec0039173",//hardcoded value
+      tweetId:feed._id,//hardcoded value
       userId:tokenPayload._id
     }
     
@@ -109,11 +110,7 @@ private getDismissReason(reason: any): string {
     return `with: ${reason}`;
   }
 }
-closeModal(){
-  this.display=false;
- document.getElementById("feed").style.opacity="1";
-  document.body.setAttribute('style', 'overflow: scroll;');
-}
+
 
   Feed: Feed[]=[
     {_id:"1",photos: '../../assets/Images/image.jpeg',text:'.Just Now',title:'Anchal',name:'@anchal_hora',description:'A flower, sometimes known as a bloom or blossom. Every flower paint contrasting colors along the ground and bring joy.',newphoto:'../../assets/Images/myimage.jpg',isClicked:false},
@@ -129,9 +126,5 @@ closeModal(){
     {message: "This trend is low quality"},
   ]
 
-  comment:any={
-     user:"amitabh",
-     tweet:"corona has locked us in our homes,but it is a great time for learning and self introspection",
-     comment:"very true said amitabh"
-    }
+  
   }

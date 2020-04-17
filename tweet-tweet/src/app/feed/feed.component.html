@@ -16,8 +16,8 @@
           <i class="fa fa-retweet"(click)="showRetweetModal()" aria-hidden="true"></i>
           <span>572</span>
         </div>
-        <div  (click)="onSelect(feed._id,feed)">
-          <i class="fa fa-heart-o" [ngClass]="{'selected':tweet.isClicked==true}" aria-hidden="true"></i>
+        <div  (click)="onSelect(tweet)">
+          <i class="fa fa-heart-o" [ngClass]="{'selected':isClicked==true}" aria-hidden="true"></i>
           <span>572</span>
         </div>
         <div>
