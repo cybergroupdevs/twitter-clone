@@ -20,10 +20,14 @@ export class TweetModalComponent implements OnInit {
     authToken: localStorage.getItem("Authorization").substring(7)
   });
   constructor(private userService: UserService,
-    public activeModal: NgbActiveModal,) { }
+    public activeModal: NgbActiveModal) {
+     
+     }
   
   flag: number = 0;
-  
+  config = {
+   
+    };
   textArea:string;
   isVisible: Boolean = false;
   mentionIdArray = [];
@@ -70,7 +74,7 @@ export class TweetModalComponent implements OnInit {
       }
     });
   }
-
+  
   OnSubmit(){
     this.uploader.onBuildItemForm = (item, form) => {
       form.append("text", this.textArea);
@@ -92,4 +96,5 @@ export class TweetModalComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+
 }

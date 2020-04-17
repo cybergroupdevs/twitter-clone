@@ -1,3 +1,5 @@
+import { CommentComponent } from './comment/comment.component';
+import { RetweetComponent } from './retweet/retweet.component';
 import { ITweet } from 'src/app/models/tweet.interface';
 import { FeedService } from 'src/app/services/feed.service';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -7,6 +9,7 @@ import { Feed } from './../models/feed.interface';
 import { likeService } from'../services/like.service';
 import { ILike } from '../models/like.interface';
 import{MatDialog,MatDialogConfig} from'@angular/material'
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 
 
 @Component({
@@ -31,7 +34,8 @@ export class FeedComponent implements OnInit {
     private likeService:likeService,
     private JsonDecoderService:JsonDecoderService,
     private dialog: MatDialog,
-    private feedService: FeedService ) { }
+    private feedService: FeedService,
+    private modalService: NgbModal ) { }
 
   ngOnInit() {
     console.log('Inside ngOnInit');   
@@ -65,7 +69,7 @@ export class FeedComponent implements OnInit {
       tweetId:"5e8351537f1fe49ec0039173",//hardcoded value
       userId:tokenPayload._id
     }
-   
+    
     this.likeService.like(this.likeObj).subscribe((res:any) => {
       this.message=res.payload.message;
     },err => {
@@ -75,9 +79,35 @@ export class FeedComponent implements OnInit {
 
 display:boolean=false;
 showModal(){
-    this.display=true;
-    document.getElementById("feed").style.opacity="0.5";
-    document.body.setAttribute('style', 'overflow: hidden;'); 
+   
+    this.open(CommentComponent);
+}
+showRetweetModal(){
+ this.open(RetweetComponent);
+ 
+}
+open(content) {
+  this.modalService
+    .open(content)
+    .result.then(
+      result => {
+      
+        this.closeResult = `Closed with: ${result}`;
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    );
+}
+
+private getDismissReason(reason: any): string {
+  if (reason === ModalDismissReasons.ESC) {
+    return "by pressing ESC";
+  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    return "by clicking on a backdrop";
+  } else {
+    return `with: ${reason}`;
+  }
 }
 closeModal(){
   this.display=false;

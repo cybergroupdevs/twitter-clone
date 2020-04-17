@@ -1,3 +1,4 @@
+import { CommentComponent } from './feed/comment/comment.component';
 
 import { RetweetComponent } from './feed/retweet/retweet.component';
 import { TweetModalComponent } from './side-nav/tweet-modal/tweet-modal.component';
@@ -54,7 +55,8 @@ const routes: Routes = [
   { path: 'create', component: CreatePostComponent},
   { path: 'modal', component: EditProfileComponent},
   { path: 'explore', component:ExploreComponent},
-  { path: 'temp', component: FeedComponent }
+  { path: 'temp', component: FeedComponent },
+  {path:'comment',component:CommentComponent }
 //   {path:"explore",component:ExploreComponent},
 //   { path: 'profile',
 //     children: [

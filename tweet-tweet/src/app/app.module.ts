@@ -69,6 +69,7 @@ import { FollowersFollowingComponent } from './followers-following/followers-fol
 import { ExploreComponent } from './explore/explore.component';
 import { RetweetComponent } from './feed/retweet/retweet.component';
 import { TweetModalComponent } from './side-nav/tweet-modal/tweet-modal.component';
+import { CommentComponent } from './feed/comment/comment.component';
 
 
 
@@ -100,7 +101,8 @@ import { TweetModalComponent } from './side-nav/tweet-modal/tweet-modal.componen
     FollowersFollowingComponent,
     ExploreComponent,
     RetweetComponent,
-    TweetModalComponent
+    TweetModalComponent,
+    CommentComponent
   ],
 
   imports: [
@@ -164,7 +166,8 @@ import { TweetModalComponent } from './side-nav/tweet-modal/tweet-modal.componen
     }
   ],
 
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[TweetModalComponent,RetweetComponent]
  
 })
 export class AppModule { }
