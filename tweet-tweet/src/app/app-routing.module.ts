@@ -30,24 +30,17 @@ const routes: Routes = [
       path: "", redirectTo: "home", pathMatch: "full"
     },
     {
-      path: "home", component: HomeComponent
+      path: "home", component: CreatePostComponent
     },
     {
-      path: "profile", component: ProfileComponent, children: [
+      path: "profile/:userhandle", component: MyprofileComponent, children: [
         {
-          path: "", redirectTo: ":userhandle", pathMatch: "full"
-        },
-        {
-          path: ":userhandle", component: MyprofileComponent
-        },
-        {
-        path: ':userhandle',
-        children: [
-          {
-            path: ':followers', component: FollowersFollowingComponent
-          }
-        ]
-      }
+          path: ':userhandle', children: [
+            {
+              path: ':followers', component: FollowersFollowingComponent
+            }
+          ]
+        }
       ]
     }
   ]},
@@ -55,28 +48,6 @@ const routes: Routes = [
   { path: 'modal', component: EditProfileComponent},
   { path: 'explore', component:ExploreComponent},
   { path: 'temp', component: FeedComponent }
-//   {path:"explore",component:ExploreComponent},
-//   { path: 'profile',
-//     children: [
-//    {  path: '', component: MyprofileComponent, 
-//       },
-//       {
-//         path: ':userhandle', component: MyprofileComponent, 
-//       },
-//       {
-//         path: ':userhandle',
-//         children: [
-//           {
-//             path: ':followers', component: FollowersFollowingComponent
-//           }
-//         ]
-//       }
-//     ]
-//   },
-//   {path: "trends", component: TrendsComponent},
-//   {path:"feed", component:FeedComponent},
-//   {path:"tweetmodal", component:TweetModalComponent},
-//   { path: "retweet", component: RetweetComponent}
 ];
 
 @NgModule({

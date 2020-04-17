@@ -1,4 +1,8 @@
-/* i{
+.outside-container{
+    margin-top: 10rem;
+}
+
+i{
     color: black;
     font-size: 18px;
     font-weight: lighter;
@@ -53,7 +57,9 @@ img{
 .main-container:hover{
     background-color: #F5F8FA;
 }
-*/
+
+
+
 .feed{
     margin-top: 260px;
 }
