@@ -1,3 +1,7 @@
+.outside-container{
+    margin-top: 10rem;
+}
+
 i{
     color: black;
     font-size: 18px;
@@ -54,6 +58,11 @@ img{
     background-color: #F5F8FA;
 }
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> d233c0ec2dcfc05f88704b3dacefb9e7834967ad
 .feed{
     margin-top: 260px;
 }

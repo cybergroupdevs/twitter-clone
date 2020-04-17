@@ -1,4 +1,4 @@
-<div>
+<div class="outside-container">
   <div class="d-flex main-container" *ngFor = "let tweet of tweets">
     <img src="../../assets/user-logo.png" class="img-icon mt-2 ml-2">
     <div class="mt-2">
@@ -10,19 +10,19 @@
       <div class="d-flex justify-content-between mr-5 icons-row">
         <div>
           <i class="fa fa-comment-o" (click)="showModal()" aria-hidden="true"></i>
-          <span>572</span>
+          <span>{{tweet.commentCount}}</span>
         </div>
         <div>
-          <i class="fa fa-retweet"(click)="showRetweetModal()" aria-hidden="true"></i>
-          <span>572</span>
+          <i class="fa fa-retweet" (click)="showRetweetModal()" aria-hidden="true"></i>
+          <span>{{tweet.retweetCount}}</span>
         </div>
-        <div  (click)="onSelect(tweet)">
+        <div  (click)="onSelect(feed._id,feed)">
           <i class="fa fa-heart-o" [ngClass]="{'selected':isClicked==true}" aria-hidden="true"></i>
-          <span>572</span>
+          <span>{{tweet.likeCount}}</span>
+
         </div>
         <div>
           <i class="fa fa-upload" aria-hidden="true"></i>
-          <span>572</span>
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import { Component, OnInit } from "@angular/core";
   selector: "app-profile",
   styleUrls: ["./profile.component.scss"],
   template: `
-  <router-outlet></router-outlet>
+  <app-myprofile></app-myprofile>
   <app-feed></app-feed>
   `
 })

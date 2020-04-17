@@ -31,24 +31,17 @@ const routes: Routes = [
       path: "", redirectTo: "home", pathMatch: "full"
     },
     {
-      path: "home", component: HomeComponent
+      path: "home", component: CreatePostComponent
     },
     {
-      path: "profile", component: ProfileComponent, children: [
+      path: "profile/:userhandle", component: MyprofileComponent, children: [
         {
-          path: "", redirectTo: ":userhandle", pathMatch: "full"
-        },
-        {
-          path: ":userhandle", component: MyprofileComponent
-        },
-        {
-        path: ':userhandle',
-        children: [
-          {
-            path: ':followers', component: FollowersFollowingComponent
-          }
-        ]
-      }
+          path: ':userhandle', children: [
+            {
+              path: ':followers', component: FollowersFollowingComponent
+            }
+          ]
+        }
       ]
     }
   ]},
