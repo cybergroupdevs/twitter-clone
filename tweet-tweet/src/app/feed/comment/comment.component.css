@@ -25,15 +25,6 @@ i{
     font-size: 18px;
     font-weight: lighter;
 }
-
-
-
-
-
-
-
-
-
 .fa:hover{
     background-color: #F5F8FA;
     padding: 0.8rem;
@@ -50,12 +41,6 @@ i{
     margin-bottom: 1rem;
     padding-bottom: 1rem;
 }
-
-
-
-
-
-
 .avatar img {
     background-position: center;
     background-repeat: no-repeat;
@@ -138,14 +123,13 @@ i{
 }
 
 .icon{
-   
     position: relative;
     font-size: medium;
-  border-radius: 30px;
-  color:gray;
-  font-weight:bold;
-  transition: all .2s ease-out;
-  justify-content: space-evenly;
+    border-radius: 30px;
+    color:gray;
+    font-weight:bold;
+    transition: all .2s ease-out;
+    justify-content: space-evenly;
 }
  
 .tweet-area{
@@ -172,7 +156,6 @@ i{
     background-color:#ecf7fc;
     cursor: pointer;
     border-radius: 50%;
-   
 }
 .icon:hover{
    background-color:#EAFAF2;
