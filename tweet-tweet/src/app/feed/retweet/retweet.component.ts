@@ -1,3 +1,4 @@
+import { NgbModal ,NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 import { Component, OnInit } from '@angular/core';
 import {ITweet, IContent} from '../../models/tweet.interface'
@@ -9,9 +10,9 @@ import {ITweet, IContent} from '../../models/tweet.interface'
 })
 export class RetweetComponent implements OnInit {
 
-  constructor() { }
+  constructor( public activeModal: NgbActiveModal) { }
 
-  Tweet: any[]=[
+  tweet: any[]=[
     {user:"Anchal",
     tweet:"3",
       date:"29Aug",

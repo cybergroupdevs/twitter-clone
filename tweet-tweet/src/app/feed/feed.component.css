@@ -38,8 +38,8 @@ img{
 }
 
 .fa:hover{
-    background-color: #F5F8FA;
-    padding: 0.8rem;
+    color: skyblue; 
+  
     cursor: pointer;
     border-radius: 30px;
 }
@@ -58,8 +58,11 @@ img{
     background-color: #F5F8FA;
 }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> d233c0ec2dcfc05f88704b3dacefb9e7834967ad
 .feed{
     margin-top: 260px;
 }
