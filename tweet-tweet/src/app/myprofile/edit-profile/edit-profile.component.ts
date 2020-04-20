@@ -55,7 +55,6 @@ export class EditProfileComponent implements OnInit {
       itemAlias: 'image'
     });
     OnInit() {
-    
       this.uploader.onAfterAddingFile = (file) => {
         file.withCredentials = false;
       };
@@ -63,17 +62,11 @@ export class EditProfileComponent implements OnInit {
         console.log("=========================", item, status);
       };
     }
-
-
   ngOnInit() {
     let currentUserhandle = this.currentUser.userhandle;
     var currentUserId = this.currentUser._id;
     this.loadUserDetails(currentUserId);
   }
-
-  updateImage(){
-  this.uploader.uploadAll()
-  };
 
   loadUserDetails(currentUserId){
     this.userService.userDetails(currentUserId).subscribe(res => {
@@ -96,14 +89,20 @@ export class EditProfileComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-
-  userUpdate(obj):any{
-    this.userService.updateUser(obj, this.currentUser._id).subscribe(
-      (res: any) => {
-        this.router.navigate(["/profile"]);
-      },
-      err => {
-        console.log(err.error.payload.message);
-      });
+  updateData(obj):any{
+    if(this.uploader.getNotUploadedItems().length != 0){
+      this.uploader.onBuildItemForm = (item, form) => {
+      };
+      this.uploader.uploadAll();
     }
+    else{
+      this.userService.updateUser(obj, this.currentUser._id).subscribe(
+        (res: any) => {
+          this.router.navigate(["/profile"]);
+        },
+        err => {
+          console.log(err.error.payload.message);
+        });
+      }
+  }
 }

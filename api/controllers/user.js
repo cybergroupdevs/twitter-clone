@@ -102,12 +102,19 @@ class UserController{
         }
         console.log(user);
     };
-    
+   
     async updateProfile(req,res) {
             try{
+                let path = "";
+                if (req.file) {
+                path = req.file.path;
+            } 
             let updateObj = {
-                "profileImageURL" : req.file.path,
-               
+                "bio":req.body.text,
+                "location":req.body.text,
+                "name":require.body.text,
+                "dob":Date,
+                "profileImageURL" :path
             };
             const user= await User.update({_id: req.params.id},  updateObj);
             res.status(200).send({success: true,
