@@ -8,7 +8,7 @@
                 </span>
                 <span class="title" role="heading">Edit profile
                 </span>
-                <span><button id="saveButton" type="submit">Save</button>
+                <span><button id="saveButton" type="submit"  (click) = "updateData()">Save</button>
                 </span>
                 </div>
             </div>
@@ -17,9 +17,23 @@
          <!-- Modal body -->
             
               <div class="twitter">
+                <div class="image-upload">
+                  <label for="file-input">
+                      <i class="fa fa-camera myicon"></i>
+                  </label>
+                 <input id="file-input" type="file"/>
+              </div>
                 <div class="row-top">
                   <div class="user-wrapper">
-                     <span class="user-image"></span>
+                     <span class="user-image" >
+                      <div class="container">
+                        <div class="positioner">
+                          <label for="file-input">
+                          <i class="fa fa-camera icon"></i>
+                        </label>
+                        </div>
+                      </div>
+                     </span>
                   </div>
                 </div>
               </div>

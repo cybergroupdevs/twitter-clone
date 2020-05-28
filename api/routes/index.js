@@ -29,7 +29,7 @@ module.exports = (app) => {
     app.get('/user/:userhandle',authenticator, controller.user.search);
     app.get('/profile/:id', authenticator,controller.user.getProfile);
     app.get('/redirectedProfile/:userhandle',authenticator, controller.user.getProfileByUserhandle);
-    app.patch('/profile/:id',authenticator, controller.user.updateProfile);
+    app.patch('/profile/:id', authenticator, upload.single('image'), controller.user.updateProfile);
     app.post('/follow',authenticator, controller.follow.follow);
     app.post('/unfollow', authenticator, controller.follow.unfollow);
     app.post('/relation',authenticator, controller.follow.checkRelation);
